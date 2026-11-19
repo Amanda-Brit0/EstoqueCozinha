@@ -1,0 +1,50 @@
+{
+  "name": "estoque-cozinha-dom-macario",
+  "version": "1.0.0",
+  "description": "Gerenciador de Estoque - Cozinha Casa Dom Macário",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build && electron-builder --win --x64",
+    "build:mac": "vite build && electron-builder --mac",
+    "vite:build": "vite build",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "br.org.domacario.estoque-cozinha",
+    "productName": "Estoque Cozinha Dom Macário",
+    "files": ["dist/**/*", "electron/**/*", "assets/**/*"],
+    "extraResources": [{ "from": "assets", "to": "assets" }],
+    "win": {
+  "target": "nsis",
+  "icon": "assets/logo.ico"
+},
+"nsis": {
+  "oneClick": false,
+  "allowToChangeInstallationDirectory": true,
+  "installerIcon": "assets/logo.ico"
+}
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "zustand": "^4.5.2",
+    "framer-motion": "^11.2.10",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.383.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^8.2.2",
+    "electron": "^30.0.9",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.3.1",
+    "wait-on": "^7.2.0"
+  }
+}
